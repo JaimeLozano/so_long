@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "so_long.h": "c",
+        "main.h": "c",
+        "libft.h": "c",
+        "mlx.h": "c",
+        "game.h": "c",
+        "stdio.h": "c",
+        "structures.h": "c",
+        "fcntl.h": "c",
+        "ft_printf.h": "c"
+    }
+}
