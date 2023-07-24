@@ -12,6 +12,11 @@
 
 #include "../inc/main.h"
 
+void	game_end(t_game *game)
+{
+	free(game);
+}
+
 t_image	ft_new_sprite(void *mlx, char *path)
 {
 	t_image	img;

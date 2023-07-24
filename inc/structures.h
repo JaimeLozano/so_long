@@ -36,6 +36,7 @@ typedef struct	s_map
 	void	*mlx;
 	void	*mlx_win;
 	char	*buffer[MAP_BUFF_SIZE];
+	int		coins;
 	t_image	wall_sprite;
 	t_image	floor_sprite;
 	t_image	coin_sprite;

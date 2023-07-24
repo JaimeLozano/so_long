@@ -31,12 +31,9 @@ int	main(int argc, char **argv)
 	}
 	game.map = read_map(fd);
 	close(fd);
-	// ret = validate_map(game.map);
-	// ret = create_map(game.map);
-	ret = create_window(&game);
 	game.player = &player;
-	player.pos.x = 1;
-	player.pos.y = 1;
+	ret = validate_map(game.map, game.player);
+	ret = create_window(&game);
 	ret = create_sprites(&game);
 	handle_move(&game);
 	if (ret != 0)

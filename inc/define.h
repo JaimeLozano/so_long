@@ -7,7 +7,19 @@
 #define EXIT_IMG  "sprites/exit.xpm"
 #define COIN_IMG  "sprites/coin.xpm"
 #define PLAYER_IMG  "sprites/player.xpm"
+
 #define BPP 64
 #define MAP_BUFF_SIZE 500
+
+#define KEY_UP      'w'
+#define KEY_DOWN    's'
+#define KEY_LEFT    'a'
+#define KEY_RIGHT   'd'
+
+#define WALL_CHAR       '1'
+#define FLOOR_CHAR      '0'
+#define EXIT_CHAR       'E'
+#define COIN_CHAR       'C'
+#define PLAYER_CHAR     'P'
 
 #endif /* DEFINE_H */
