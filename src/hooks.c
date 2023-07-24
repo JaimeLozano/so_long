@@ -1,11 +1,11 @@
 #include "../inc/main.h"
 #include <stdio.h>
 #include "../inc/structures.h"
+#include "../inc/map.h"
 
 int handle_move(t_game *game)
 {
-    mlx_clear_window(game->map->mlx, game->map->mlx_win);
-	mlx_put_image_to_window(game->map->mlx, game->map->mlx_win, game->map->wall_sprite.ref, 0, 0);
+    put_map(game->map);
 	mlx_put_image_to_window(game->map->mlx, game->map->mlx_win, game->map->player_sprite.ref, game->player->pos.x * BPP, game->player->pos.y * BPP);
 	return(0);
 }

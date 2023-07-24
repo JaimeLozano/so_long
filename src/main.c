@@ -29,14 +29,16 @@ int	main(int argc, char **argv)
 	{
 		return (-1);
 	}
-	game.map = create_map(fd);
+	game.map = read_map(fd);
 	close(fd);
-//	ret = validate_map(game->map);
+	// ret = validate_map(game.map);
+	// ret = create_map(game.map);
 	ret = create_window(&game);
 	game.player = &player;
 	player.pos.x = 1;
 	player.pos.y = 1;
 	ret = create_sprites(&game);
+	handle_move(&game);
 	if (ret != 0)
 	{
 		ft_printf("Init error\n");

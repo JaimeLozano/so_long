@@ -24,9 +24,12 @@ t_image	ft_new_sprite(void *mlx, char *path)
 int	create_sprites(t_game *game)
 {
 	game->map->wall_sprite = ft_new_sprite(game->map->mlx, WALL_IMG);
+	game->map->floor_sprite = ft_new_sprite(game->map->mlx, FLOOR_IMG);
+	game->map->exit_sprite = ft_new_sprite(game->map->mlx, EXIT_IMG);
+	game->map->coin_sprite = ft_new_sprite(game->map->mlx, COIN_IMG);
 	game->map->player_sprite = ft_new_sprite(game->map->mlx, PLAYER_IMG);
-	mlx_put_image_to_window(game->map->mlx, game->map->mlx_win, game->map->wall_sprite.ref, 0, 0);
-	mlx_put_image_to_window(game->map->mlx, game->map->mlx_win, game->map->player_sprite.ref, game->player->pos.x * BPP, game->player->pos.y * BPP);
+//	mlx_put_image_to_window(game->map->mlx, game->map->mlx_win, game->map->wall_sprite.ref, 0, 0);
+//	mlx_put_image_to_window(game->map->mlx, game->map->mlx_win, game->map->player_sprite.ref, game->player->pos.x * BPP, game->player->pos.y * BPP);
 	return(0);
 }
 

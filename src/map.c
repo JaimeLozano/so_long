@@ -11,8 +11,51 @@
 /* ************************************************************************** */
 
 #include "../inc/map.h"
+#include "../inc/game.h"
 
-t_map	*create_map(int fd)
+int	put_map(t_map *map)
+{
+	int	i;
+	int	j;
+	char pos;
+
+	i = map->size.y;
+	j = map->size.x;
+	while (i--)
+	{
+		while (j--)
+		{
+			pos = map->buffer[i][j];
+			if (pos == '1')
+				mlx_put_image_to_window(map->mlx, map->mlx_win, map->wall_sprite.ref, j * BPP, i * BPP);
+			else if (pos == '0')
+				mlx_put_image_to_window(map->mlx, map->mlx_win, map->floor_sprite.ref, j * BPP, i * BPP);
+			else if (pos == 'E')
+    			mlx_put_image_to_window(map->mlx, map->mlx_win, map->exit_sprite.ref, j * BPP, i * BPP);
+			else if (pos == 'C')
+    			mlx_put_image_to_window(map->mlx, map->mlx_win, map->coin_sprite.ref, j * BPP, i * BPP);
+			else if (pos == 'P')
+    			mlx_put_image_to_window(map->mlx, map->mlx_win, map->player_sprite.ref, j * BPP, i * BPP);
+		}
+		j = map->size.x;
+	}
+	return(0);
+}
+// int	create_map(t_map *map)
+// {
+
+
+// 	return(0);
+// }
+
+// int	validate_map(t_map *map)
+// {
+
+
+// 	return (0);
+// }
+
+t_map	*read_map(int fd)
 {
 	int		i;
 	char	*tab[100];
@@ -37,12 +80,18 @@ t_map	*create_map(int fd)
 	if (!map)
 		return (NULL);
 	map->size.y = i;
-	map->size.x = i;
-	map->mlx = tab;
 	line_size = ft_strlen(tab[0]);
-	printf("line_size %d\n", line_size);
-	printf("i %d\n", i);
-	// while (i--)
-	// 	ft_strncpy(map->buffer[i], tab[i], line_size);
+	map->size.x = line_size;
+	printf("%s", tab[0]);
+	printf("%s", tab[1]);
+	printf("%s", tab[2]);
+	printf("\n");
+	printf("i: %d, line_size: %d\n", i, line_size);
+	while (i--)
+	{
+		map->buffer[i] = (char *)malloc(1 * sizeof(char));
+		ft_strlcpy(map->buffer[i], tab[i], line_size);
+		printf("map.buffer[%d]: %s\n", i, map->buffer[i]);
+	}
 	return (map);
 }

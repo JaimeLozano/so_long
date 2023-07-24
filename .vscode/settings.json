@@ -8,6 +8,7 @@
         "stdio.h": "c",
         "structures.h": "c",
         "fcntl.h": "c",
-        "ft_printf.h": "c"
+        "ft_printf.h": "c",
+        "map.h": "c"
     }
 }

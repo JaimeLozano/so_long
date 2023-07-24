@@ -17,8 +17,9 @@ SRC		= src/main.c	\
 			src/hooks.c
 OBJ		= $(SRC:.c=.o)
 CC		= cc
-CFLAGS	= #-Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra
 RM		= rm -f
+
 
 # minilibx
 #MLX_INC		= -I /usr/local/include
