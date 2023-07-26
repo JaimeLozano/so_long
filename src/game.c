@@ -14,7 +14,8 @@
 
 void	game_end(t_game *game)
 {
-	free(game);
+	mlx_destroy_window(game->map->mlx, game->map->mlx_win);
+	exit(0);
 }
 
 t_image	ft_new_sprite(void *mlx, char *path)
@@ -33,15 +34,13 @@ int	create_sprites(t_game *game)
 	game->map->exit_sprite = ft_new_sprite(game->map->mlx, EXIT_IMG);
 	game->map->coin_sprite = ft_new_sprite(game->map->mlx, COIN_IMG);
 	game->map->player_sprite = ft_new_sprite(game->map->mlx, PLAYER_IMG);
-//	mlx_put_image_to_window(game->map->mlx, game->map->mlx_win, game->map->wall_sprite.ref, 0, 0);
-//	mlx_put_image_to_window(game->map->mlx, game->map->mlx_win, game->map->player_sprite.ref, game->player->pos.x * BPP, game->player->pos.y * BPP);
 	return(0);
 }
 
 int	create_window(t_game *game)
 {
 	game->map->mlx = mlx_init();
-	game->map->mlx_win = mlx_new_window(game->map->mlx, game->map->size.x * BPP, game->map->size.y * BPP, "so_long");
+	game->map->mlx_win = mlx_new_window(game->map->mlx, (game->map->size.x - 1) * BPP, game->map->size.y * BPP, "so_long");
 
 	if (!game->map->mlx_win)
 	{

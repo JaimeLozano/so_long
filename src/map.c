@@ -28,7 +28,7 @@ int	put_map(t_map *map)
 			pos = map->buffer[i][j];
 			if (pos == WALL_CHAR)
 				mlx_put_image_to_window(map->mlx, map->mlx_win, map->wall_sprite.ref, j * BPP, i * BPP);
-			else if (pos == FLOOR_CHAR)
+			else if (pos == FLOOR_CHAR || pos == PLAYER_CHAR)
 				mlx_put_image_to_window(map->mlx, map->mlx_win, map->floor_sprite.ref, j * BPP, i * BPP);
 			else if (pos == EXIT_CHAR)
     			mlx_put_image_to_window(map->mlx, map->mlx_win, map->exit_sprite.ref, j * BPP, i * BPP);
@@ -46,7 +46,7 @@ int	validate_map(t_map *map, t_player *player)
 {
 	int	i;
 	int	j;
-	char pos;
+	char *pos;
 
 	j = map->size.x;
 	i = map->size.y;
@@ -54,17 +54,18 @@ int	validate_map(t_map *map, t_player *player)
 	{
 		while (j--)
 		{
-			pos = map->buffer[i][j];
-			if (pos == WALL_CHAR)
+			pos = &map->buffer[i][j];
+			if (*pos == WALL_CHAR)
 				NULL;
-			else if (pos == FLOOR_CHAR)
+			else if (*pos == FLOOR_CHAR)
 				NULL;
-			else if (pos == EXIT_CHAR)
+			else if (*pos == EXIT_CHAR)
 				NULL;
-			else if (pos == COIN_CHAR)
+			else if (*pos == COIN_CHAR)
     			map->coins++;
-			else if (pos == PLAYER_CHAR)
+			else if (*pos == PLAYER_CHAR)
 			{
+				*pos = FLOOR_CHAR;
 				player->pos.x = j;
 				player->pos.y = i;
 			}
@@ -99,7 +100,7 @@ t_map	*read_map(int fd)
 	if (!map)
 		return (NULL);
 	map->size.y = i;
-	line_size = ft_strlen(tab[0]) - 1;
+	line_size = ft_strlen(tab[0]);
 	map->size.x = line_size;
 	printf("%s", tab[0]);
 	printf("%s", tab[1]);

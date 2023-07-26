@@ -18,7 +18,6 @@ int check_move(t_game *game, t_point direction)
 
     new_pos.x = game->player->pos.x + direction.x;
     new_pos.y = game->player->pos.y + direction.y;
-    printf("plypos: %d %d\n", game->player->pos.x, game->player->pos.y);
     printf("direction: %d %d\n", direction.x, direction.y);
     printf("newpos: %d %d\n", new_pos.x, new_pos.y);
     map_char = &game->map->buffer[new_pos.y][new_pos.x];
@@ -37,9 +36,8 @@ int check_move(t_game *game, t_point direction)
     }
     else if (*map_char == EXIT_CHAR)
     {
-        NULL;
-        // if (game->map->coins == 0)
-        //     game_end(game);
+        if (game->map->coins == 0)
+            game_end(game);
     }
     printf("coins: %d\n", game->map->coins);
 
