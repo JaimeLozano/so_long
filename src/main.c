@@ -12,6 +12,17 @@
 
 #include "../inc/main.h"
 
+/*
+TODO:
+- gestionar leaks
++ contar pasos
+- botón X
+- validar mapa
+- makefile (no recompila gnl cuando ha cambiado, recompila libft cuando borro .o pero la lib existe)
+- (pragma rosa del player)
+- ()
+*/
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -29,8 +40,10 @@ int	main(int argc, char **argv)
 	{
 		return (-1);
 	}
+	map_checkName(argv[1]);
 	game.map = read_map(fd);
 	close(fd);
+    player.move_counter = 0;
 	game.player = &player;
 	ret = validate_map(game.map, game.player);
 	ret = create_window(&game);

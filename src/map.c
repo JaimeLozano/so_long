@@ -13,6 +13,13 @@
 #include "../inc/map.h"
 #include "../inc/game.h"
 
+void	map_checkName(char *filename)
+{
+	filename = filename + ft_strlen(filename) - 4;
+	if (ft_strncmp(filename, ".ber", 4) != 0)
+		exit(1);
+}
+
 int	put_map(t_map *map)
 {
 	int	i;
