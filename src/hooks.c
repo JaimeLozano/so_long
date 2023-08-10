@@ -26,6 +26,7 @@ int check_move(t_game *game, t_point direction)
     {
         game->player->pos.x += direction.x;
         game->player->pos.y += direction.y;
+        game->player->move_counter++;
     }
     else if (*map_char == COIN_CHAR)
     {
@@ -33,6 +34,7 @@ int check_move(t_game *game, t_point direction)
         game->map->coins--;
         game->player->pos.x += direction.x;
         game->player->pos.y += direction.y;
+        game->player->move_counter++;
     }
     else if (*map_char == EXIT_CHAR)
     {
@@ -40,6 +42,7 @@ int check_move(t_game *game, t_point direction)
             game_end(game);
     }
     printf("coins: %d\n", game->map->coins);
+    printf("movements: %d\n", game->player->move_counter);
 
 
     return (0);
