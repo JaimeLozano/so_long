@@ -35,7 +35,7 @@ typedef struct	s_map
 {
 	void	*mlx;
 	void	*mlx_win;
-	char	*buffer[MAP_BUFF_SIZE];
+	char	**buffer;
 	int		coins;
 	int		exit_present;
 	int		player_present;

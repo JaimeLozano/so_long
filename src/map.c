@@ -188,7 +188,7 @@ t_map	*read_map(int fd)
 	printf("%s", tab[2]);
 	printf("\n");
 	printf("i: %d, line_size: %d\n", i, line_size);
-//	map->buffer = (char **)ft_calloc(i, sizeof(char *));
+	map->buffer = (char **)ft_calloc(i, sizeof(char *));
 	i--;
 	map->buffer[i] = (char *)malloc(1 * sizeof(char));
 	ft_strlcpy(map->buffer[i], tab[i], ft_strlen(tab[i]) + 1);

@@ -9,7 +9,6 @@
 #define PLAYER_IMG  "sprites/player.xpm"
 
 #define BPP 64
-#define MAP_BUFF_SIZE 500
 
 #define KEY_UP      'w'
 #define KEY_DOWN    's'
