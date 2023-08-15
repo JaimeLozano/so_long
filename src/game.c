@@ -12,8 +12,33 @@
 
 #include "../inc/main.h"
 
+void	tab_free_lines(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (NULL != tab[i])
+	{
+		printf("%s\n", tab[i]);
+		free(tab[i]);
+		tab[i] = NULL;
+		++i;
+	}
+}
+
+void	tab_free(char **tab)
+{
+	tab_free_lines(tab);
+	free(tab);
+}
+
 void	game_end(t_game *game)
 {
+	//map_free(game->map);
+	// tab_free(game->map->buffer);
+	free(game->map->buffer[0]);
+	free(game->map->buffer[1]);
+	free(game->map->buffer[2]);
 	mlx_destroy_window(game->map->mlx, game->map->mlx_win);
 	exit(0);
 }
@@ -40,7 +65,8 @@ int	create_sprites(t_game *game)
 int	create_window(t_game *game)
 {
 	game->map->mlx = mlx_init();
-	game->map->mlx_win = mlx_new_window(game->map->mlx, (game->map->size.x - 1) * BPP, game->map->size.y * BPP, "so_long");
+	printf("init\n");
+	game->map->mlx_win = mlx_new_window(game->map->mlx, (game->map->size.x) * BPP, game->map->size.y * BPP, "so_long");
 
 	if (!game->map->mlx_win)
 	{

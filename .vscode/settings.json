@@ -9,6 +9,7 @@
         "structures.h": "c",
         "fcntl.h": "c",
         "ft_printf.h": "c",
-        "map.h": "c"
+        "map.h": "c",
+        "get_next_line_bonus.h": "c"
     }
 }

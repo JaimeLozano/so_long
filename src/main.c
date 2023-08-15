@@ -17,8 +17,12 @@ TODO:
 - gestionar leaks
 + contar pasos
 - botón X
-- validar mapa
++ validar mapa
 - makefile (no recompila gnl cuando ha cambiado, recompila libft cuando borro .o pero la lib existe)
+- puedo utilizar exit(1)? map.c l.20
+- gestionar mallocs cuando hay error
+- check size_t casting to int
+- quitar printfs
 - (pragma rosa del player)
 - ()
 */
@@ -45,7 +49,7 @@ int	main(int argc, char **argv)
 	close(fd);
     player.move_counter = 0;
 	game.player = &player;
-	ret = validate_map(game.map, game.player);
+	ret = map_validate(game.map, game.player);
 	ret = create_window(&game);
 	ret = create_sprites(&game);
 	handle_move(&game);

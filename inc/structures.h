@@ -37,6 +37,8 @@ typedef struct	s_map
 	void	*mlx_win;
 	char	*buffer[MAP_BUFF_SIZE];
 	int		coins;
+	int		exit_present;
+	int		player_present;
 	t_image	wall_sprite;
 	t_image	floor_sprite;
 	t_image	coin_sprite;

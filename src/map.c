@@ -49,7 +49,7 @@ int	put_map(t_map *map)
 	return(0);
 }
 
-int	validate_map(t_map *map, t_player *player)
+static int	validateItems(t_map *map, t_player *player)
 {
 	int	i;
 	int	j;
@@ -67,11 +67,12 @@ int	validate_map(t_map *map, t_player *player)
 			else if (*pos == FLOOR_CHAR)
 				NULL;
 			else if (*pos == EXIT_CHAR)
-				NULL;
+				map->exit_present++;
 			else if (*pos == COIN_CHAR)
     			map->coins++;
 			else if (*pos == PLAYER_CHAR)
 			{
+				map->player_present++;
 				*pos = FLOOR_CHAR;
 				player->pos.x = j;
 				player->pos.y = i;
@@ -80,6 +81,79 @@ int	validate_map(t_map *map, t_player *player)
 		j = map->size.x;
 	}
 	return(0);
+}
+
+static int	checkTopLine(t_map *map, int i)
+{
+	int	j;
+
+	j = 0;
+	while (map->buffer[i][j] == WALL_CHAR)
+		j++;
+	if (map->size.x != j)
+	{
+		printf("Top row invalid\n");
+		exit(1);
+	}
+	return (0);
+}
+
+static int	checkBottomLine(t_map *map, int i)
+{
+	int	j;
+
+	j = 0;
+	while (map->buffer[i][j] == WALL_CHAR)
+		j++;
+	if (map->size.x != j)
+	{
+		printf("Bottom row invalid\n");
+		exit(1);
+	}
+	return (0);
+}
+
+static int	checkBodyLine(t_map *map, int i)
+{
+	int ret;
+
+	ret = 0;
+	if (map->buffer[i][0] != WALL_CHAR)
+		ret = 1;
+	if (map->buffer[i][map->size.x  - 1] != WALL_CHAR)
+		ret = 2;
+	if ((int)ft_strlen(map->buffer[i]) != map->size.x)
+		ret = 3;
+	if (ret != 0)
+	{
+		printf("Body row invalid. Ret = %d\n", ret);
+		exit(1);
+	}
+	return (0);
+}
+
+static int	validateCorners(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	checkTopLine(map, i++);
+	while (i < (map->size.y - 1))
+		checkBodyLine(map, i++);
+	checkBottomLine(map, i);
+	return (0);
+}
+
+int map_validate(t_map *map, t_player *player)
+{
+	validateItems(map, player);
+	if (!map->exit_present || !map->player_present || !map->coins)
+	{
+		printf("Map invalid");
+		exit(1);
+	}
+	validateCorners(map);
+	return (0);
 }
 
 t_map	*read_map(int fd)
@@ -108,16 +182,21 @@ t_map	*read_map(int fd)
 		return (NULL);
 	map->size.y = i;
 	line_size = ft_strlen(tab[0]);
-	map->size.x = line_size;
+	map->size.x = line_size - 1;
 	printf("%s", tab[0]);
 	printf("%s", tab[1]);
 	printf("%s", tab[2]);
 	printf("\n");
 	printf("i: %d, line_size: %d\n", i, line_size);
+//	map->buffer = (char **)ft_calloc(i, sizeof(char *));
+	i--;
+	map->buffer[i] = (char *)malloc(1 * sizeof(char));
+	ft_strlcpy(map->buffer[i], tab[i], ft_strlen(tab[i]) + 1);
+	printf("map.buffer[%d]: %s\n", i, map->buffer[i]);
 	while (i--)
 	{
 		map->buffer[i] = (char *)malloc(1 * sizeof(char));
-		ft_strlcpy(map->buffer[i], tab[i], line_size);
+		ft_strlcpy(map->buffer[i], tab[i], ft_strlen(tab[i]));
 		printf("map.buffer[%d]: %s\n", i, map->buffer[i]);
 	}
 	return (map);
