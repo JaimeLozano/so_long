@@ -4,13 +4,6 @@
 #include "../inc/map.h"
 #include "../inc/game.h"
 
-int handle_move(t_game *game)
-{
-    put_map(game);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->map->player_sprite.ref, game->player->pos.x * BPP, game->player->pos.y * BPP);
-	return(0);
-}
-
 int check_move(t_game *game, t_point direction)
 {
     char    *map_char;
@@ -18,10 +11,7 @@ int check_move(t_game *game, t_point direction)
 
     new_pos.x = game->player->pos.x + direction.x;
     new_pos.y = game->player->pos.y + direction.y;
-    printf("direction: %d %d\n", direction.x, direction.y);
-    printf("newpos: %d %d\n", new_pos.x, new_pos.y);
     map_char = &game->map->buffer[new_pos.y][new_pos.x];
-    printf("map_char: %c\n", *map_char);
     if (*map_char == FLOOR_CHAR)
     {
         game->player->pos.x += direction.x;
@@ -35,13 +25,13 @@ int check_move(t_game *game, t_point direction)
         game->player->pos.x += direction.x;
         game->player->pos.y += direction.y;
         game->player->move_counter++;
+        printf("coins: %d\n", game->map->coins);
     }
     else if (*map_char == EXIT_CHAR)
     {
         if (game->map->coins == 0)
             game_end(game);
     }
-    printf("coins: %d\n", game->map->coins);
     printf("movements: %d\n", game->player->move_counter);
 
 
@@ -68,7 +58,7 @@ int key_hook(int key, void *param)
         {printf("Key not valid");}
 
     check_move(game, p);
-    handle_move(game);
+    put_map(game);
 
     return (0);
 }

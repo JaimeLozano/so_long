@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 	ret = map_validate(game.map, game.player);
 	ret = create_window(&game);
 	ret = create_sprites(&game);
-	handle_move(&game);
+	put_map(&game);
 	if (ret != 0)
 	{
 		ft_printf("Init error\n");

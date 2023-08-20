@@ -20,7 +20,6 @@ int	create_sprites(t_game *game);
 
 int key_hook(int key, void *param);
 int ft_update (void *param);
-int handle_move(t_game *game);
 void	game_end(t_game *game);
 
 

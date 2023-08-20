@@ -24,20 +24,21 @@ void	map_free(t_map *map)
 		++i;
 	}
 	free(map->buffer);
+	free(map);
 }
 
 void	game_end(t_game *game)
 {
 
-	map_free(game->map);
 	mlx_destroy_image(game->mlx_ptr, game->map->player_sprite.ref);
-	// free(game->player);
 	mlx_destroy_image(game->mlx_ptr, game->map->wall_sprite.ref);
 	mlx_destroy_image(game->mlx_ptr, game->map->floor_sprite.ref);
 	mlx_destroy_image(game->mlx_ptr, game->map->coin_sprite.ref);
 	mlx_destroy_image(game->mlx_ptr, game->map->exit_sprite.ref);
+	map_free(game->map);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	free(game->map);
+	mlx_destroy_display(game->mlx_ptr);
+	free(game->mlx_ptr);
 	exit(0);
 }
 

@@ -43,11 +43,10 @@ int	put_map(t_game *game)
     			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->exit_sprite.ref, j * BPP, i * BPP);
 			else if (pos == COIN_CHAR)
     			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->coin_sprite.ref, j * BPP, i * BPP);
-			// else if (pos == PLAYER_CHAR)
-    		// 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->player_sprite.ref, j * BPP, i * BPP);
 		}
 		j = map->size.x;
 	}
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->map->player_sprite.ref, game->player->pos.x * BPP, game->player->pos.y * BPP);
 	return(0);
 }
 
