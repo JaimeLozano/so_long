@@ -12,34 +12,32 @@
 
 #include "../inc/main.h"
 
-void	tab_free_lines(char **tab)
+void	map_free(t_map *map)
 {
 	int	i;
 
 	i = 0;
-	while (NULL != tab[i])
+	while (i < map->size.y)
 	{
-		printf("%s\n", tab[i]);
-		free(tab[i]);
-		tab[i] = NULL;
+		free(map->buffer[i]);
+		map->buffer[i] = NULL;
 		++i;
 	}
-}
-
-void	tab_free(char **tab)
-{
-	tab_free_lines(tab);
-	free(tab);
+	free(map->buffer);
 }
 
 void	game_end(t_game *game)
 {
-	//map_free(game->map);
-	// tab_free(game->map->buffer);
-	free(game->map->buffer[0]);
-	free(game->map->buffer[1]);
-	free(game->map->buffer[2]);
+
+	map_free(game->map);
+	mlx_destroy_image(game->map->mlx, game->map->player_sprite.ref);
+	// free(game->player);
+	mlx_destroy_image(game->map->mlx, game->map->wall_sprite.ref);
+	mlx_destroy_image(game->map->mlx, game->map->floor_sprite.ref);
+	mlx_destroy_image(game->map->mlx, game->map->coin_sprite.ref);
+	mlx_destroy_image(game->map->mlx, game->map->exit_sprite.ref);
 	mlx_destroy_window(game->map->mlx, game->map->mlx_win);
+	free(game->map);
 	exit(0);
 }
 
@@ -65,7 +63,6 @@ int	create_sprites(t_game *game)
 int	create_window(t_game *game)
 {
 	game->map->mlx = mlx_init();
-	printf("init\n");
 	game->map->mlx_win = mlx_new_window(game->map->mlx, (game->map->size.x) * BPP, game->map->size.y * BPP, "so_long");
 
 	if (!game->map->mlx_win)

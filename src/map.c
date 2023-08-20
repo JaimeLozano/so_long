@@ -98,6 +98,25 @@ static int	checkTopLine(t_map *map, int i)
 	return (0);
 }
 
+static int	checkBodyLine(t_map *map, int i)
+{
+	int ret;
+
+	ret = 0;
+	if (map->buffer[i][0] != WALL_CHAR)
+		ret = 1;
+	if (map->buffer[i][map->size.x  - 1] != WALL_CHAR)
+		ret = 2;
+	if ((int)ft_strlen(map->buffer[i]) - 1 != map->size.x)
+		ret = 3;
+	if (ret != 0)
+	{
+		printf("Body row invalid. Ret = %d\n", ret);
+		exit(1);
+	}
+	return (0);
+}
+
 static int	checkBottomLine(t_map *map, int i)
 {
 	int	j;
@@ -108,25 +127,6 @@ static int	checkBottomLine(t_map *map, int i)
 	if (map->size.x != j)
 	{
 		printf("Bottom row invalid\n");
-		exit(1);
-	}
-	return (0);
-}
-
-static int	checkBodyLine(t_map *map, int i)
-{
-	int ret;
-
-	ret = 0;
-	if (map->buffer[i][0] != WALL_CHAR)
-		ret = 1;
-	if (map->buffer[i][map->size.x  - 1] != WALL_CHAR)
-		ret = 2;
-	if ((int)ft_strlen(map->buffer[i]) != map->size.x)
-		ret = 3;
-	if (ret != 0)
-	{
-		printf("Body row invalid. Ret = %d\n", ret);
 		exit(1);
 	}
 	return (0);
@@ -189,14 +189,9 @@ t_map	*read_map(int fd)
 	printf("\n");
 	printf("i: %d, line_size: %d\n", i, line_size);
 	map->buffer = (char **)ft_calloc(i, sizeof(char *));
-	i--;
-	map->buffer[i] = (char *)malloc(1 * sizeof(char));
-	ft_strlcpy(map->buffer[i], tab[i], ft_strlen(tab[i]) + 1);
-	printf("map.buffer[%d]: %s\n", i, map->buffer[i]);
 	while (i--)
 	{
-		map->buffer[i] = (char *)malloc(1 * sizeof(char));
-		ft_strlcpy(map->buffer[i], tab[i], ft_strlen(tab[i]));
+		map->buffer[i] = tab[i];
 		printf("map.buffer[%d]: %s\n", i, map->buffer[i]);
 	}
 	return (map);
