@@ -63,11 +63,7 @@ static int	validateItems(t_map *map, t_player *player)
 		while (j--)
 		{
 			pos = &map->buffer[i][j];
-			if (*pos == WALL_CHAR)
-				NULL;
-			else if (*pos == FLOOR_CHAR)
-				NULL;
-			else if (*pos == EXIT_CHAR)
+			if (*pos == EXIT_CHAR)
 				map->exit_present++;
 			else if (*pos == COIN_CHAR)
     			map->coins++;
@@ -191,9 +187,6 @@ t_map	*read_map(int fd)
 	printf("i: %d, line_size: %d\n", i, line_size);
 	map->buffer = (char **)ft_calloc(i, sizeof(char *));
 	while (i--)
-	{
 		map->buffer[i] = tab[i];
-		printf("map.buffer[%d]: %s\n", i, map->buffer[i]);
-	}
 	return (map);
 }

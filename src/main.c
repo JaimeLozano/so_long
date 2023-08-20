@@ -14,10 +14,11 @@
 
 /*
 TODO:
-- gestionar leaks
++ gestionar leaks
 + contar pasos
 - botón X
 + validar mapa
+	|_ - camino válido
 - makefile (no recompila gnl cuando ha cambiado, recompila libft cuando borro .o pero la lib existe)
 - puedo utilizar exit(1)? map.c l.20
 - gestionar mallocs cuando hay error

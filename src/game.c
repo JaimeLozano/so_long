@@ -29,7 +29,6 @@ void	map_free(t_map *map)
 
 void	game_end(t_game *game)
 {
-
 	mlx_destroy_image(game->mlx_ptr, game->map->player_sprite.ref);
 	mlx_destroy_image(game->mlx_ptr, game->map->wall_sprite.ref);
 	mlx_destroy_image(game->mlx_ptr, game->map->floor_sprite.ref);
