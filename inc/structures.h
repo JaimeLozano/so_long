@@ -33,8 +33,6 @@ typedef struct	s_image
 
 typedef struct	s_map
 {
-	void	*mlx;
-	void	*mlx_win;
 	char	**buffer;
 	int		coins;
 	int		exit_present;
@@ -57,8 +55,8 @@ typedef struct s_player
 
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
+	void		*mlx_ptr;
+	void		*win_ptr;
 	t_map		*map;
 	t_player	*player;
 }				t_game;

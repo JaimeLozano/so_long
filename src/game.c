@@ -30,42 +30,42 @@ void	game_end(t_game *game)
 {
 
 	map_free(game->map);
-	mlx_destroy_image(game->map->mlx, game->map->player_sprite.ref);
+	mlx_destroy_image(game->mlx_ptr, game->map->player_sprite.ref);
 	// free(game->player);
-	mlx_destroy_image(game->map->mlx, game->map->wall_sprite.ref);
-	mlx_destroy_image(game->map->mlx, game->map->floor_sprite.ref);
-	mlx_destroy_image(game->map->mlx, game->map->coin_sprite.ref);
-	mlx_destroy_image(game->map->mlx, game->map->exit_sprite.ref);
-	mlx_destroy_window(game->map->mlx, game->map->mlx_win);
+	mlx_destroy_image(game->mlx_ptr, game->map->wall_sprite.ref);
+	mlx_destroy_image(game->mlx_ptr, game->map->floor_sprite.ref);
+	mlx_destroy_image(game->mlx_ptr, game->map->coin_sprite.ref);
+	mlx_destroy_image(game->mlx_ptr, game->map->exit_sprite.ref);
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	free(game->map);
 	exit(0);
 }
 
-t_image	ft_new_sprite(void *mlx, char *path)
+t_image	ft_new_sprite(void *mlx_ptr, char *path)
 {
 	t_image	img;
 	
-	img.ref = mlx_xpm_file_to_image(mlx, path, &img.size.x, &img.size.y);
+	img.ref = mlx_xpm_file_to_image(mlx_ptr, path, &img.size.x, &img.size.y);
 	img.pixels  = mlx_get_data_addr(img.ref, &img.bits_per_pixel, &img.line_size, &img.endian);
 	return (img);
 }
 
 int	create_sprites(t_game *game)
 {
-	game->map->wall_sprite = ft_new_sprite(game->map->mlx, WALL_IMG);
-	game->map->floor_sprite = ft_new_sprite(game->map->mlx, FLOOR_IMG);
-	game->map->exit_sprite = ft_new_sprite(game->map->mlx, EXIT_IMG);
-	game->map->coin_sprite = ft_new_sprite(game->map->mlx, COIN_IMG);
-	game->map->player_sprite = ft_new_sprite(game->map->mlx, PLAYER_IMG);
+	game->map->wall_sprite = ft_new_sprite(game->mlx_ptr, WALL_IMG);
+	game->map->floor_sprite = ft_new_sprite(game->mlx_ptr, FLOOR_IMG);
+	game->map->exit_sprite = ft_new_sprite(game->mlx_ptr, EXIT_IMG);
+	game->map->coin_sprite = ft_new_sprite(game->mlx_ptr, COIN_IMG);
+	game->map->player_sprite = ft_new_sprite(game->mlx_ptr, PLAYER_IMG);
 	return(0);
 }
 
 int	create_window(t_game *game)
 {
-	game->map->mlx = mlx_init();
-	game->map->mlx_win = mlx_new_window(game->map->mlx, (game->map->size.x) * BPP, game->map->size.y * BPP, "so_long");
+	game->mlx_ptr = mlx_init();
+	game->win_ptr = mlx_new_window(game->mlx_ptr, (game->map->size.x) * BPP, game->map->size.y * BPP, "so_long");
 
-	if (!game->map->mlx_win)
+	if (!game->win_ptr)
 	{
 		return (-1);
 	}

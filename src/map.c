@@ -20,12 +20,14 @@ void	map_checkName(char *filename)
 		exit(1);
 }
 
-int	put_map(t_map *map)
+int	put_map(t_game *game)
 {
 	int	i;
 	int	j;
 	char pos;
+	t_map *map;
 
+	map = game->map;
 	i = map->size.y;
 	j = map->size.x;
 	while (i--)
@@ -34,15 +36,15 @@ int	put_map(t_map *map)
 		{
 			pos = map->buffer[i][j];
 			if (pos == WALL_CHAR)
-				mlx_put_image_to_window(map->mlx, map->mlx_win, map->wall_sprite.ref, j * BPP, i * BPP);
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->wall_sprite.ref, j * BPP, i * BPP);
 			else if (pos == FLOOR_CHAR || pos == PLAYER_CHAR)
-				mlx_put_image_to_window(map->mlx, map->mlx_win, map->floor_sprite.ref, j * BPP, i * BPP);
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->floor_sprite.ref, j * BPP, i * BPP);
 			else if (pos == EXIT_CHAR)
-    			mlx_put_image_to_window(map->mlx, map->mlx_win, map->exit_sprite.ref, j * BPP, i * BPP);
+    			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->exit_sprite.ref, j * BPP, i * BPP);
 			else if (pos == COIN_CHAR)
-    			mlx_put_image_to_window(map->mlx, map->mlx_win, map->coin_sprite.ref, j * BPP, i * BPP);
+    			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->coin_sprite.ref, j * BPP, i * BPP);
 			// else if (pos == PLAYER_CHAR)
-    		// 	mlx_put_image_to_window(map->mlx, map->mlx_win, map->player_sprite.ref, j * BPP, i * BPP);
+    		// 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->player_sprite.ref, j * BPP, i * BPP);
 		}
 		j = map->size.x;
 	}

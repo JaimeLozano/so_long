@@ -6,8 +6,8 @@
 
 int handle_move(t_game *game)
 {
-    put_map(game->map);
-	mlx_put_image_to_window(game->map->mlx, game->map->mlx_win, game->map->player_sprite.ref, game->player->pos.x * BPP, game->player->pos.y * BPP);
+    put_map(game);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->map->player_sprite.ref, game->player->pos.x * BPP, game->player->pos.y * BPP);
 	return(0);
 }
 
@@ -71,14 +71,4 @@ int key_hook(int key, void *param)
     handle_move(game);
 
     return (0);
-}
-
-int ft_update (void *param)
-{
-    t_game *game = (t_game *) param;
-//    mlx_clear_window(game->map->mlx, game->map->mlx_win);
-
-    handle_move(game);
-
-    return(0);
 }

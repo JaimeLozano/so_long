@@ -58,8 +58,7 @@ int	main(int argc, char **argv)
 		ft_printf("Init error\n");
 		return (-1);
 	}
-	mlx_key_hook(game.map->mlx_win, *key_hook, &game);
-//	mlx_loop_hook(game.map->mlx, *ft_update, &game);
-	mlx_loop(game.map->mlx);
+	mlx_key_hook(game.win_ptr, *key_hook, &game);
+	mlx_loop(game.mlx_ptr);
 	return (0);
 }
