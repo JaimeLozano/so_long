@@ -144,9 +144,10 @@ static int	validateCorners(t_map *map)
 int map_validate(t_map *map, t_player *player)
 {
 	validateItems(map, player);
-	if (!map->exit_present || !map->player_present || !map->coins)
+	if (map->exit_present != 1 || map->player_present != 1 || map->coins < 1)
 	{
 		printf("Map invalid");
+		map_free(map);
 		exit(1);
 	}
 	validateCorners(map);
@@ -189,4 +190,19 @@ t_map	*read_map(int fd)
 	while (i--)
 		map->buffer[i] = tab[i];
 	return (map);
+}
+
+void	map_free(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->size.y)
+	{
+		free(map->buffer[i]);
+		map->buffer[i] = NULL;
+		++i;
+	}
+	free(map->buffer);
+	free(map);
 }

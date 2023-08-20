@@ -11,21 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/main.h"
-
-void	map_free(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (i < map->size.y)
-	{
-		free(map->buffer[i]);
-		map->buffer[i] = NULL;
-		++i;
-	}
-	free(map->buffer);
-	free(map);
-}
+#include "../inc/map.h"
 
 void	game_end(t_game *game)
 {
