@@ -50,7 +50,7 @@ int	put_map(t_game *game)
 	return(0);
 }
 
-static int	validateItems(t_map *map, t_player *player)
+static void	validateItems(t_map *map, t_player *player)
 {
 	int	i;
 	int	j;
@@ -77,7 +77,6 @@ static int	validateItems(t_map *map, t_player *player)
 		}
 		j = map->size.x;
 	}
-	return(0);
 }
 
 static int	checkTopLine(t_map *map, int i)
