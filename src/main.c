@@ -33,33 +33,49 @@ int	main(int argc, char **argv)
 	t_game	game;
 	t_player player;
 	int		fd;
-	int		ret;
 
 	if (argc != 2)
 	{
-		ft_printf("Argument error");
-		return (-1);
+		print_error(ERROR_ARGC);
 	}
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
-		return (-1);
+		print_error(ERROR_FD);
 	}
 	map_checkName(argv[1]);
 	game.map = read_map(fd);
 	close(fd);
     player.move_counter = 0;
 	game.player = &player;
-	ret = map_validate(game.map, game.player);
-	ret = create_window(&game);
-	ret = create_sprites(&game);
+	map_validate(game.map, game.player);
+	create_window(&game);
+	create_sprites(&game);
 	put_map(&game);
-	if (ret != 0)
-	{
-		ft_printf("Init error\n");
-		return (-1);
-	}
 	mlx_key_hook(game.win_ptr, *key_hook, &game);
 	mlx_loop(game.mlx_ptr);
-	return (0);
+	return (SUCCESS);
+}
+
+void	print_error(int error_code)
+{
+	if (error_code == ERROR_ARGC)
+		ft_printf("Error\nERROR CODE: %d. Number of arguments error\n", error_code);
+	else if (error_code == ERROR_FD)
+		ft_printf("Error\nERROR CODE: %d. File descriptor error\n", error_code);
+	else if (error_code == ERROR_TOP)
+		ft_printf("Error\nERROR CODE: %d. Map error on top row\n", error_code);
+	else if (error_code == ERROR_BODY)
+		ft_printf("Error\nERROR CODE: %d. Map error on body row\n", error_code);
+	else if (error_code == ERROR_BOTTOM)
+		ft_printf("Error\nERROR CODE: %d. Map error on bottom row\n", error_code);
+	else if (error_code == ERROR_HEIGHT)
+		ft_printf("Error\nERROR CODE: %d. Map error height too small\n", error_code);
+	else if (error_code == ERROR_ITEMS)
+		ft_printf("Error\nERROR CODE: %d. Map error: player, coins or exit not present\n", error_code);
+	else if (error_code == ERROR_PATH)
+		ft_printf("Error\nERROR CODE: %d. Map error: no path possible\n", error_code);
+	else if (error_code == ERROR_WINDOW_CREATE)
+		ft_printf("Error\nERROR CODE: %d. No pointer to window returned\n", error_code);
+	exit(1);
 }

@@ -17,10 +17,10 @@ void	map_checkName(char *filename)
 {
 	filename = filename + ft_strlen(filename) - 4;
 	if (ft_strncmp(filename, ".ber", 4) != 0)
-		exit(1);
+		print_error(ERROR_NAME);
 }
 
-int	put_map(t_game *game)
+void	put_map(t_game *game)
 {
 	int	i;
 	int	j;
@@ -47,7 +47,6 @@ int	put_map(t_game *game)
 		j = map->size.x;
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->map->player_sprite.ref, game->player->pos.x * BPP, game->player->pos.y * BPP);
-	return(0);
 }
 
 static void	validateItems(t_map *map, t_player *player)
@@ -79,7 +78,7 @@ static void	validateItems(t_map *map, t_player *player)
 	}
 }
 
-static int	checkTopLine(t_map *map, int i)
+static void	checkTopLine(t_map *map, int i)
 {
 	int	j;
 
@@ -88,13 +87,12 @@ static int	checkTopLine(t_map *map, int i)
 		j++;
 	if (map->size.x != j)
 	{
-		printf("Top row invalid\n");
-		exit(1);
+		map_free(map);
+		print_error(ERROR_TOP);
 	}
-	return (0);
 }
 
-static int	checkBodyLine(t_map *map, int i)
+static void	checkBodyLine(t_map *map, int i)
 {
 	int ret;
 
@@ -107,13 +105,12 @@ static int	checkBodyLine(t_map *map, int i)
 		ret = 3;
 	if (ret != 0)
 	{
-		printf("Body row invalid. Ret = %d\n", ret);
-		exit(1);
+		map_free(map);
+		print_error(ERROR_BODY);
 	}
-	return (0);
 }
 
-static int	checkBottomLine(t_map *map, int i)
+static void	checkBottomLine(t_map *map, int i)
 {
 	int	j;
 
@@ -122,13 +119,12 @@ static int	checkBottomLine(t_map *map, int i)
 		j++;
 	if (map->size.x != j)
 	{
-		printf("Bottom row invalid\n");
-		exit(1);
+		map_free(map);
+		print_error(ERROR_BOTTOM);
 	}
-	return (0);
 }
 
-static int	validateCorners(t_map *map)
+static void	validateCorners(t_map *map)
 {
 	int	i;
 
@@ -137,20 +133,17 @@ static int	validateCorners(t_map *map)
 	while (i < (map->size.y - 1))
 		checkBodyLine(map, i++);
 	checkBottomLine(map, i);
-	return (0);
 }
 
-int map_validate(t_map *map, t_player *player)
+void map_validate(t_map *map, t_player *player)
 {
 	validateItems(map, player);
 	if (map->exit_present != 1 || map->player_present != 1 || map->coins < 1)
 	{
-		printf("Map invalid");
 		map_free(map);
-		exit(1);
+		print_error(ERROR_ITEMS);
 	}
 	validateCorners(map);
-	return (0);
 }
 
 t_map	*read_map(int fd)
@@ -163,7 +156,7 @@ t_map	*read_map(int fd)
 
 	line = get_next_line(fd);
 	if (!line)
-		return (NULL);
+		print_error(ERROR_TOP);
 	tab[0] = line;
 	line = get_next_line(fd);
 	i = 1;
@@ -176,7 +169,7 @@ t_map	*read_map(int fd)
 	tab[i] = NULL;
 	map = (t_map *)ft_calloc(1, sizeof(t_map));
 	if (!map)
-		return (NULL);
+		print_error(ERROR_MEMORY);
 	map->size.y = i;
 	line_size = ft_strlen(tab[0]);
 	map->size.x = line_size - 1;

@@ -36,24 +36,23 @@ t_image	ft_new_sprite(void *mlx_ptr, char *path)
 	return (img);
 }
 
-int	create_sprites(t_game *game)
+void	create_sprites(t_game *game)
 {
 	game->map->wall_sprite = ft_new_sprite(game->mlx_ptr, WALL_IMG);
 	game->map->floor_sprite = ft_new_sprite(game->mlx_ptr, FLOOR_IMG);
 	game->map->exit_sprite = ft_new_sprite(game->mlx_ptr, EXIT_IMG);
 	game->map->coin_sprite = ft_new_sprite(game->mlx_ptr, COIN_IMG);
 	game->map->player_sprite = ft_new_sprite(game->mlx_ptr, PLAYER_IMG);
-	return(0);
 }
 
-int	create_window(t_game *game)
+void	create_window(t_game *game)
 {
 	game->mlx_ptr = mlx_init();
 	game->win_ptr = mlx_new_window(game->mlx_ptr, (game->map->size.x) * BPP, game->map->size.y * BPP, "so_long");
 
 	if (!game->win_ptr)
 	{
-		return (-1);
+		map_free(game->map);
+		print_error(ERROR_WINDOW_CREATE);
 	}
-	return (0);
 }

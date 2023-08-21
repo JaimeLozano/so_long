@@ -23,4 +23,6 @@
 #include "define.h"
 #include "map.h"
 
+void	print_error(int error_code);
+
 #endif

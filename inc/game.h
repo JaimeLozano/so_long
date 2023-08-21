@@ -15,8 +15,8 @@
 
 # include "main.h"
 
-int	create_window(t_game *game);
-int	create_sprites(t_game *game);
+void	create_window(t_game *game);
+void	create_sprites(t_game *game);
 
 int key_hook(int key, void *param);
 int ft_update (void *param);

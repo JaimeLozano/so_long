@@ -21,4 +21,18 @@
 #define COIN_CHAR       'C'
 #define PLAYER_CHAR     'P'
 
+//Error return codes
+#define SUCCESS             0
+#define ERROR_ARGC          1
+#define ERROR_FD            2
+#define ERROR_NAME          3
+#define ERROR_TOP           4
+#define ERROR_BODY          5
+#define ERROR_BOTTOM        6
+#define ERROR_HEIGHT        7
+#define ERROR_ITEMS         8
+#define ERROR_PATH          9
+#define ERROR_WINDOW_CREATE 10
+#define ERROR_MEMORY        11
+
 #endif /* DEFINE_H */
