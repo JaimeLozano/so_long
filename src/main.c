@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:03:15 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/07/07 08:44:21 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/08/24 09:51:01 by jaime            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ TODO:
 + contar pasos
 - botón X
 + validar mapa
-	|_ - camino válido
+	|_ + camino válido
 - makefile (no recompila gnl cuando ha cambiado, recompila libft cuando borro .o pero la lib existe)
-- puedo utilizar exit(1)? map.c l.20
 - gestionar mallocs cuando hay error
 - check size_t casting to int
 - quitar printfs
 - (pragma rosa del player)
+- mapa en consola mostrar entero, no solo tres filas
 - ()
 */
 
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 	close(fd);
     player.move_counter = 0;
 	game.player = &player;
-	map_validate(game.map, game.player);
+	map_validate(&game);
 	create_window(&game);
 	create_sprites(&game);
 	put_map(&game);
@@ -74,7 +74,7 @@ void	print_error(int error_code)
 	else if (error_code == ERROR_ITEMS)
 		ft_printf("Error\nERROR CODE: %d. Map error: player, coins or exit not present\n", error_code);
 	else if (error_code == ERROR_PATH)
-		ft_printf("Error\nERROR CODE: %d. Map error: no path possible\n", error_code);
+		ft_printf("Error\nERROR CODE: %d. Map error: no path possible from P to E\n", error_code);
 	else if (error_code == ERROR_WINDOW_CREATE)
 		ft_printf("Error\nERROR CODE: %d. No pointer to window returned\n", error_code);
 	exit(1);

@@ -6,7 +6,7 @@
 #    By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 22:28:45 by jlozano-          #+#    #+#              #
-#    Updated: 2023/07/07 02:05:36 by jlozano-         ###   ########.fr        #
+#    Updated: 2023/08/24 09:42:12 by jaime            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME	= so_long
 SRC		= src/main.c	\
 			src/game.c	\
 			src/map.c	\
-			src/hooks.c
+			src/hooks.c	\
+			src/mapValidate.c
 OBJ		= $(SRC:.c=.o)
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra

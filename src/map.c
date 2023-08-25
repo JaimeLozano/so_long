@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:00:43 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/07/07 08:50:18 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/08/24 09:52:36 by jaime            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,103 +47,6 @@ void	put_map(t_game *game)
 		j = map->size.x;
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->map->player_sprite.ref, game->player->pos.x * BPP, game->player->pos.y * BPP);
-}
-
-static void	validateItems(t_map *map, t_player *player)
-{
-	int	i;
-	int	j;
-	char *pos;
-
-	j = map->size.x;
-	i = map->size.y;
-	while (i--)
-	{
-		while (j--)
-		{
-			pos = &map->buffer[i][j];
-			if (*pos == EXIT_CHAR)
-				map->exit_present++;
-			else if (*pos == COIN_CHAR)
-    			map->coins++;
-			else if (*pos == PLAYER_CHAR)
-			{
-				map->player_present++;
-				*pos = FLOOR_CHAR;
-				player->pos.x = j;
-				player->pos.y = i;
-			}
-		}
-		j = map->size.x;
-	}
-}
-
-static void	checkTopLine(t_map *map, int i)
-{
-	int	j;
-
-	j = 0;
-	while (map->buffer[i][j] == WALL_CHAR)
-		j++;
-	if (map->size.x != j)
-	{
-		map_free(map);
-		print_error(ERROR_TOP);
-	}
-}
-
-static void	checkBodyLine(t_map *map, int i)
-{
-	int ret;
-
-	ret = 0;
-	if (map->buffer[i][0] != WALL_CHAR)
-		ret = 1;
-	if (map->buffer[i][map->size.x  - 1] != WALL_CHAR)
-		ret = 2;
-	if ((int)ft_strlen(map->buffer[i]) - 1 != map->size.x)
-		ret = 3;
-	if (ret != 0)
-	{
-		map_free(map);
-		print_error(ERROR_BODY);
-	}
-}
-
-static void	checkBottomLine(t_map *map, int i)
-{
-	int	j;
-
-	j = 0;
-	while (map->buffer[i][j] == WALL_CHAR)
-		j++;
-	if (map->size.x != j)
-	{
-		map_free(map);
-		print_error(ERROR_BOTTOM);
-	}
-}
-
-static void	validateCorners(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	checkTopLine(map, i++);
-	while (i < (map->size.y - 1))
-		checkBodyLine(map, i++);
-	checkBottomLine(map, i);
-}
-
-void map_validate(t_map *map, t_player *player)
-{
-	validateItems(map, player);
-	if (map->exit_present != 1 || map->player_present != 1 || map->coins < 1)
-	{
-		map_free(map);
-		print_error(ERROR_ITEMS);
-	}
-	validateCorners(map);
 }
 
 t_map	*read_map(int fd)
@@ -197,4 +100,5 @@ void	map_free(t_map *map)
 	}
 	free(map->buffer);
 	free(map);
+	map = NULL;
 }

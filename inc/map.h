@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaime <jaime@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/25 09:07:13 by jaime             #+#    #+#             */
+/*   Updated: 2023/08/25 09:07:33 by jaime            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "structures.h"
 #include "main.h"
 
 void	map_checkName(char *filename);
 t_map	*read_map(int fd);
-void	map_validate(t_map *map, t_player *player);
-int create_map(t_map *map);
-void put_map(t_game *game);
+void	map_validate(t_game *game);
+int     create_map(t_map *map);
+void    put_map(t_game *game);
 void	map_free(t_map *map);
