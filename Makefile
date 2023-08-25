@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+         #
+#    By: jaime <jaime@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 22:28:45 by jlozano-          #+#    #+#              #
-#    Updated: 2023/08/24 09:42:12 by jaime            ###   ########.fr        #
+#    Updated: 2023/08/25 09:18:27 by jaime            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRC		= src/main.c	\
 			src/game.c	\
 			src/map.c	\
 			src/hooks.c	\
-			src/mapValidate.c
+			src/map_validate.c
 OBJ		= $(SRC:.c=.o)
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra
