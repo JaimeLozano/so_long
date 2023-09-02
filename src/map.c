@@ -6,7 +6,7 @@
 /*   By: jaime <jaime@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:00:43 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/02 17:36:30 by jaime            ###   ########.fr       */
+/*   Updated: 2023/09/02 18:34:31 by jaime            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,18 @@ void	put_map(t_game *game)
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->map->player_sprite.ref, game->player->pos.x * BPP, game->player->pos.y * BPP);
 }
 
+void	map_print(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->size.y)
+	{
+		ft_printf("%s", map->buffer[i]);
+		i++;
+	}
+}
+
 t_map	*read_map(int fd)
 {
 	int		i;
@@ -80,11 +92,6 @@ t_map	*read_map(int fd)
 	map->size.y = i;
 	line_size = ft_strlen(tab[0]);
 	map->size.x = line_size - 1;
-	ft_printf("%s", tab[0]);
-	ft_printf("%s", tab[1]);
-	ft_printf("%s", tab[2]);
-	ft_printf("\n");
-	ft_printf("i: %d, line_size: %d\n", i, line_size);
 	map->buffer = (char **)ft_calloc(i, sizeof(char *));
 	while (i--)
 		map->buffer[i] = tab[i];

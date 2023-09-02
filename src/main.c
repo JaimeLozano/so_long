@@ -6,7 +6,7 @@
 /*   By: jaime <jaime@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:03:15 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/02 17:42:33 by jaime            ###   ########.fr       */
+/*   Updated: 2023/09/02 18:36:06 by jaime            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ TODO:
 - botón X
 + validar mapa
 	|_ + camino válido
-- makefile (no recompila gnl cuando ha cambiado, recompila libft cuando borro .o pero la lib existe)
++ makefile (no recompila gnl cuando ha cambiado, recompila libft cuando borro .o pero la lib existe)
+- makefile (error en test/main.c al compilar)
 - gestionar mallocs cuando hay error
 - check size_t casting to int
-- quitar printfs
++ quitar printfs
 - (pragma rosa del player)
-- mapa en consola mostrar entero, no solo tres filas
++ mapa en consola mostrar entero, no solo tres filas
 - ()
 */
 
@@ -57,6 +58,7 @@ int	main(int argc, char **argv)
     player.move_counter = 0;
 	game.player = &player;
 	map_validate(&game);
+	map_print(game.map);
 	create_window(&game);
 	create_sprites(&game);
 	put_map(&game);
