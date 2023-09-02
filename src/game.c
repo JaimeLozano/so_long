@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaime <jaime@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:23:06 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/07/07 10:54:17 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/02 17:42:24 by jaime            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.h"
-#include "../inc/map.h"
+#include "mlx.h"
+#include "stdlib.h"
+#include "map.h"
 
 void	game_end(t_game *game)
 {

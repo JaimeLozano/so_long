@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaime <jaime@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:00:43 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/08/24 09:52:36 by jaime            ###   ########.fr       */
+/*   Updated: 2023/09/02 17:36:30 by jaime            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/map.h"
-#include "../inc/game.h"
+#include "map.h"
+#include "game.h"
+#include "mlx.h"
+#include "libft.h"
+#include "ft_printf.h"
+#include "get_next_line.h"
 
 void	map_checkName(char *filename)
 {
@@ -76,11 +80,11 @@ t_map	*read_map(int fd)
 	map->size.y = i;
 	line_size = ft_strlen(tab[0]);
 	map->size.x = line_size - 1;
-	printf("%s", tab[0]);
-	printf("%s", tab[1]);
-	printf("%s", tab[2]);
-	printf("\n");
-	printf("i: %d, line_size: %d\n", i, line_size);
+	ft_printf("%s", tab[0]);
+	ft_printf("%s", tab[1]);
+	ft_printf("%s", tab[2]);
+	ft_printf("\n");
+	ft_printf("i: %d, line_size: %d\n", i, line_size);
 	map->buffer = (char **)ft_calloc(i, sizeof(char *));
 	while (i--)
 		map->buffer[i] = tab[i];

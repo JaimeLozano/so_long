@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mapValidate.c                                      :+:      :+:    :+:   */
+/*   map_validate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaime <jaime@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 08:54:07 by jaime             #+#    #+#             */
-/*   Updated: 2023/08/25 08:55:56 by jaime            ###   ########.fr       */
+/*   Updated: 2023/09/02 17:37:09 by jaime            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/map.h"
-#include "../inc/game.h"
+#include "map.h"
+#include "game.h"
+#include "libft.h"
 
 static void	validateItems(t_game *game)
 {

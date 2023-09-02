@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaime <jaime@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:03:15 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/08/24 09:51:01 by jaime            ###   ########.fr       */
+/*   Updated: 2023/09/02 17:42:33 by jaime            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.h"
+#include <stdlib.h>
+#include <fcntl.h>
+#include "mlx.h"
+#include "ft_printf.h"
+#include "get_next_line.h"
+#include "structures.h"
+#include "game.h"
+#include "main.h"
+#include "map.h"
 
 /*
 TODO:

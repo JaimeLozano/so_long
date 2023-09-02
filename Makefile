@@ -6,7 +6,7 @@
 #    By: jaime <jaime@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 22:28:45 by jlozano-          #+#    #+#              #
-#    Updated: 2023/08/25 09:18:27 by jaime            ###   ########.fr        #
+#    Updated: 2023/09/02 17:47:02 by jaime            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,8 @@ SRC		= src/main.c	\
 			src/map_validate.c
 OBJ		= $(SRC:.c=.o)
 CC		= cc
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -c
 RM		= rm -f
-
 
 # minilibx
 #MLX_INC		= -I /usr/local/include
@@ -34,6 +33,9 @@ MLX_CFLAGS = " -Wno-deprecated-declarations"
 #FMWK =  -framework OpenGL -framework AppKit 
 FMWK = -lXext -lX11
 
+# libft
+LIBFT_DIR	= ft_printf/libft 
+
 # ft_printf
 FT_PRINTF_NAME	= ft_printf.a
 FT_PRINTF_DIR	= ft_printf
@@ -46,12 +48,17 @@ GNL			= $(addprefix $(GNL_DIR)/, $(GNL_NAME))
 
 # so_long
 SO_LONG_INC_DIR		= inc
-SO_LONG_INC_NAME	= main.h	\
-						game.h	\
-						map.h	
+SO_LONG_INC_NAME	= main.h			\
+						game.h			\
+						map.h			\
+						define.h		\
+						structures.h		
 SO_LONG_INC = $(addprefix $(SO_LONG_INC_DIR)/, $(SO_LONG_INC_NAME))
 
-HEAD_DIR = -I$(FT_PRINTF_DIR) -I$(SO_LONG_INC_DIR) -I$(LIBMLX_DIR)
+HEAD_DIR = -I$(LIBMLX_DIR) -I$(LIBFT_DIR) -I$(FT_PRINTF_DIR) -I$(GNL_DIR) -I$(SO_LONG_INC_DIR)
+
+%.o: %.c $(SO_LONG_INC)
+	$(CC) $(CFLAGS) $< $(HEAD_DIR) -o $@ 
 
 all: $(NAME)
 
