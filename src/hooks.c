@@ -6,7 +6,7 @@
 /*   By: jaime <jaime@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 08:54:07 by jaime             #+#    #+#             */
-/*   Updated: 2023/09/02 17:52:28 by jaime            ###   ########.fr       */
+/*   Updated: 2023/09/02 17:57:43 by jaime            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "structures.h"
 #include "map.h"
 #include "game.h"
+#include "ft_printf.h"
 
 int check_move(t_game *game, t_point direction)
 {
