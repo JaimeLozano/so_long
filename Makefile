@@ -66,7 +66,7 @@ $(NAME): $(OBJ)
 #	make -C $(LIBMLX_DIR)  CFLAGS+=$(MLX_CFLAGS)
 	make -C $(FT_PRINTF_DIR)
 	make -C $(GNL_DIR)
-	$(CC) $(OBJ) -I$(SO_LONG_INC_DIR) -I$(GNL_DIR) $(GNL) $(FT_PRINTF) $(LIBMLX) $(FMWK) -o $(NAME)
+	$(CC) $(OBJ) -I$(SO_LONG_INC_DIR) $(GNL) $(FT_PRINTF) $(LIBMLX) $(FMWK) -o $(NAME)
 
 clean:
 	$(RM) $(OBJ)
