@@ -29,9 +29,9 @@ all: $(NAME)
 
 $(LIBFT):	$(LIBFT_DIR)
 			make -C $(LIBFT_DIR)
-			cp $(LIBFT) $(NAME)
 
 $(NAME):	$(OBJS) $(LIBFT)
+			cp $(LIBFT) $(NAME)
 			$(AR) $(NAME) $(OBJS)
 
 clean:
