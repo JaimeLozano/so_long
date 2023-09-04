@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 01:01:04 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/07/07 01:04:53 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/04 21:20:03 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	create_sprites(t_game *game);
 
 int key_hook(int key, void *param);
 int ft_update (void *param);
-void	game_end(t_game *game);
+int	game_end(t_game *game);
 
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaime <jaime@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 08:54:07 by jaime             #+#    #+#             */
-/*   Updated: 2023/09/02 17:54:45 by jaime            ###   ########.fr       */
+/*   Updated: 2023/09/04 21:11:41 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,18 @@
 
 #define BPP 64
 
-#define KEY_UP      'w'
-#define KEY_DOWN    's'
-#define KEY_LEFT    'a'
-#define KEY_RIGHT   'd'
+// #define KEY_UP      'w'
+// #define KEY_DOWN    's'
+// #define KEY_LEFT    'a'
+// #define KEY_RIGHT   'd'
+
+// Events (defined by mlx)
+#define DESTROY_WINDOW	17
+#define ESC				53
+#define KEY_UP      	13
+#define KEY_DOWN    	1
+#define KEY_LEFT    	0
+#define KEY_RIGHT   	2
 
 #define WALL_CHAR       '1'
 #define FLOOR_CHAR      '0'

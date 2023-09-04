@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaime <jaime@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:23:06 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/02 17:42:24 by jaime            ###   ########.fr       */
+/*   Updated: 2023/09/04 21:31:19 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "stdlib.h"
 #include "map.h"
 
-void	game_end(t_game *game)
+int	game_end(t_game *game)
 {
 	mlx_destroy_image(game->mlx_ptr, game->map->player_sprite.ref);
 	mlx_destroy_image(game->mlx_ptr, game->map->wall_sprite.ref);
@@ -23,9 +23,9 @@ void	game_end(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->map->exit_sprite.ref);
 	map_free(game->map);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	mlx_destroy_display(game->mlx_ptr);
+//	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
-	exit(0);
+	exit(SUCCESS);
 }
 
 t_image	ft_new_sprite(void *mlx_ptr, char *path)

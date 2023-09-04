@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaime <jaime@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:00:43 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/02 18:34:31 by jaime            ###   ########.fr       */
+/*   Updated: 2023/09/04 21:22:34 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	map_print(t_map *map)
 		ft_printf("%s", map->buffer[i]);
 		i++;
 	}
+	ft_printf("\n");
 }
 
 t_map	*read_map(int fd)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaime <jaime@student.42.fr>                +#+  +:+       +#+         #
+#    By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 22:28:45 by jlozano-          #+#    #+#              #
-#    Updated: 2023/09/02 17:47:02 by jaime            ###   ########.fr        #
+#    Updated: 2023/09/04 20:08:56 by jlozano-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,21 +17,21 @@ SRC		= src/main.c	\
 			src/hooks.c	\
 			src/map_validate.c
 OBJ		= $(SRC:.c=.o)
-CC		= cc
+CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra -c
 RM		= rm -f
 
 # minilibx
-#MLX_INC		= -I /usr/local/include
-#MLX_LIB		= -L /usr/local/lib
-LIBMLX_NAME = libmlx.a
-LIBMLX_DIR = mlx
-LIBMLX = $(addprefix $(LIBMLX_DIR)/, $(LIBMLX_NAME))
-MLX_CFLAGS = " -Wno-deprecated-declarations"
+LIBMLX_DIR	= /usr/local/include
+LIBMLX		= /usr/local/lib/libmlx.a
+# LIBMLX_NAME = libmlx.a
+# LIBMLX_DIR = mlx
+# LIBMLX = $(addprefix $(LIBMLX_DIR)/, $(LIBMLX_NAME))
+# MLX_CFLAGS = " -Wno-deprecated-declarations"
 
 # frameworks
-#FMWK =  -framework OpenGL -framework AppKit 
-FMWK = -lXext -lX11
+FMWK =  -framework OpenGL -framework AppKit 
+#FMWK = -lXext -lX11
 
 # libft
 LIBFT_DIR	= ft_printf/libft 

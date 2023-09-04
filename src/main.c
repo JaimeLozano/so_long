@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaime <jaime@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:03:15 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/02 18:36:06 by jaime            ###   ########.fr       */
+/*   Updated: 2023/09/04 21:24:12 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@
 TODO:
 + gestionar leaks
 + contar pasos
-- botón X
++ botón X
 + validar mapa
 	|_ + camino válido
 + makefile (no recompila gnl cuando ha cambiado, recompila libft cuando borro .o pero la lib existe)
-- makefile (error en test/main.c al compilar)
-- gestionar mallocs cuando hay error
-- check size_t casting to int
++ makefile (error en test/main.c al compilar)
++ gestionar mallocs cuando hay error
++ check size_t casting to int
 + quitar printfs
-- (pragma rosa del player)
++ (pragma rosa del player)
 + mapa en consola mostrar entero, no solo tres filas
 - ()
 */
@@ -63,6 +63,7 @@ int	main(int argc, char **argv)
 	create_sprites(&game);
 	put_map(&game);
 	mlx_key_hook(game.win_ptr, *key_hook, &game);
+	mlx_hook(game.win_ptr, DESTROY_WINDOW, 0, game_end, &game);
 	mlx_loop(game.mlx_ptr);
 	return (SUCCESS);
 }
