@@ -42,6 +42,8 @@ static void	validateItems(t_game *game)
 				player->pos.x = j;
 				player->pos.y = i;
 			}
+			else if (*pos != WALL_CHAR && *pos != FLOOR_CHAR)
+				map->exit_present = -100;
 		}
 		j = map->size.x;
 	}

@@ -82,7 +82,7 @@ void	print_error(int error_code)
 	else if (error_code == ERROR_HEIGHT)
 		ft_printf("Error\nERROR CODE: %d. Map error height too small\n", error_code);
 	else if (error_code == ERROR_ITEMS)
-		ft_printf("Error\nERROR CODE: %d. Map error: player, coins or exit not present\n", error_code);
+		ft_printf("Error\nERROR CODE: %d. Map error: player, coins, exit or character invalid\n", error_code);
 	else if (error_code == ERROR_PATH)
 		ft_printf("Error\nERROR CODE: %d. Map error: no path possible from P to E\n", error_code);
 	else if (error_code == ERROR_WINDOW_CREATE)
