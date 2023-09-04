@@ -13,6 +13,9 @@
         "get_next_line_bonus.h": "c",
         "get_next_line.h": "c",
         "define.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "map_validate_utils.h": "c",
+        "__tree": "c",
+        "map": "c"
     }
 }

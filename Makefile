@@ -6,16 +6,17 @@
 #    By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 22:28:45 by jlozano-          #+#    #+#              #
-#    Updated: 2023/09/04 20:08:56 by jlozano-         ###   ########.fr        #
+#    Updated: 2023/09/04 22:51:44 by jlozano-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= so_long
-SRC		= src/main.c	\
-			src/game.c	\
-			src/map.c	\
-			src/hooks.c	\
-			src/map_validate.c
+SRC		= src/main.c			\
+			src/game.c			\
+			src/map.c			\
+			src/hooks.c			\
+			src/map_validate.c	\
+			src/map_validate_utils.c
 OBJ		= $(SRC:.c=.o)
 CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra -c
@@ -52,7 +53,7 @@ SO_LONG_INC_NAME	= main.h			\
 						game.h			\
 						map.h			\
 						define.h		\
-						structures.h		
+						structures.h
 SO_LONG_INC = $(addprefix $(SO_LONG_INC_DIR)/, $(SO_LONG_INC_NAME))
 
 HEAD_DIR = -I$(LIBMLX_DIR) -I$(LIBFT_DIR) -I$(FT_PRINTF_DIR) -I$(GNL_DIR) -I$(SO_LONG_INC_DIR)

@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:23:06 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/04 21:31:19 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/04 22:05:15 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "stdlib.h"
 #include "map.h"
 
-int	game_end(t_game *game)
+void	game_end(t_game *game)
 {
 	mlx_destroy_image(game->mlx_ptr, game->map->player_sprite.ref);
 	mlx_destroy_image(game->mlx_ptr, game->map->wall_sprite.ref);
@@ -23,17 +23,17 @@ int	game_end(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->map->exit_sprite.ref);
 	map_free(game->map);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-//	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
-	exit(SUCCESS);
+	exit(0);
 }
 
 t_image	ft_new_sprite(void *mlx_ptr, char *path)
 {
 	t_image	img;
-	
+
 	img.ref = mlx_xpm_file_to_image(mlx_ptr, path, &img.size.x, &img.size.y);
-	img.pixels  = mlx_get_data_addr(img.ref, &img.bits_per_pixel, &img.line_size, &img.endian);
+	img.pixels = mlx_get_data_addr(img.ref, &img.bits_per_pixel, \
+									&img.line_size, &img.endian);
 	return (img);
 }
 
@@ -49,8 +49,8 @@ void	create_sprites(t_game *game)
 void	create_window(t_game *game)
 {
 	game->mlx_ptr = mlx_init();
-	game->win_ptr = mlx_new_window(game->mlx_ptr, (game->map->size.x) * BPP, game->map->size.y * BPP, "so_long");
-
+	game->win_ptr = mlx_new_window(game->mlx_ptr, (game->map->size.x) * BPP, \
+												game->map->size.y * BPP, NAME);
 	if (!game->win_ptr)
 	{
 		map_free(game->map);

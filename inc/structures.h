@@ -6,22 +6,22 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 01:10:55 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/07/07 10:52:23 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/04 23:49:18 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-#include "define.h"
+# include "define.h"
 
-typedef struct	s_point
+typedef struct s_point
 {
 	int	x;
-	int y;
-} 		t_point;
+	int	y;
+}				t_point;
 
-typedef struct	s_image
+typedef struct s_image
 {
 	void	*ref;
 	t_point	size;
@@ -31,7 +31,7 @@ typedef struct	s_image
 	int		endian;
 }				t_image;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char	**buffer;
 	int		coins;
@@ -41,9 +41,9 @@ typedef struct	s_map
 	t_image	floor_sprite;
 	t_image	coin_sprite;
 	t_image	exit_sprite;
-	t_image player_sprite;
+	t_image	player_sprite;
 	t_point	size;
-} 			t_map;
+}				t_map;
 
 typedef struct s_player
 {
