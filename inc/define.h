@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 08:54:07 by jaime             #+#    #+#             */
-/*   Updated: 2023/09/05 18:14:00 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/05 18:18:42 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@
 # define ERROR_ITEMS			8
 # define ERROR_PATH				9
 # define ERROR_WINDOW_CREATE	10
-# define ERROR_MEMOR			11
+# define ERROR_MEMORY			11
 
 #endif /* DEFINE_H */
