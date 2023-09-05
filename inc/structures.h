@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 01:10:55 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/04 23:49:18 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/05 22:45:32 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	void	*ref;
 	int		is_enable;
 	int		move_counter;
 	t_point	pos;
