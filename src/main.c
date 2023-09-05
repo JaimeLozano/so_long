@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:03:15 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/04 23:47:37 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/05 22:40:54 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	print_error(int error_code)
 		ft_printf("Error\nERROR CODE: %d. Nº of arguments error\n", error_code);
 	else if (error_code == ERROR_FD)
 		ft_printf("Error\nERROR CODE: %d. File descriptor error\n", error_code);
+	else if (error_code == ERROR_NAME)
+		ft_printf("Error\nERROR CODE: %d. File extension error\n", error_code);
 	else if (error_code == ERROR_TOP)
 		ft_printf("Error\nERROR CODE: %d. Map error on top row\n", error_code);
 	else if (error_code == ERROR_BODY)
