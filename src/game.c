@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:23:06 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/04 22:05:15 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/05 19:01:53 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	game_end(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->map->exit_sprite.ref);
 	map_free(game->map);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	free(game->mlx_ptr);
 	exit(0);
 }
 
