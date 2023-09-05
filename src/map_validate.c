@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 08:54:07 by jaime             #+#    #+#             */
-/*   Updated: 2023/09/04 23:47:58 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/05 23:10:36 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,12 @@ void	map_validate(t_game *game)
 
 	map = game->map;
 	game->player->move_counter = 0;
+	check_corners(map);
 	check_items(game->map, game->player);
 	if (map->exit_present != 1 || map->player_present != 1 || map->coins < 1)
 	{
 		map_free(map);
 		print_error(ERROR_ITEMS);
 	}
-	check_corners(map);
 	check_path(game);
 }
