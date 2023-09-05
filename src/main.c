@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:03:15 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/05 22:44:10 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/05 22:45:03 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ int	main(int argc, char **argv)
 	int			fd;
 
 	if (argc != 2)
-	{
 		print_error(ERROR_ARGC);
-	}
 	map_check_name(argv[1]);
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
