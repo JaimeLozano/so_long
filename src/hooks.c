@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 08:54:07 by jaime             #+#    #+#             */
-/*   Updated: 2023/09/08 19:04:11 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/08 22:35:50 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	check_move(t_game *game, t_point direction)
 	new_pos.x = game->player.pos.x + direction.x;
 	new_pos.y = game->player.pos.y + direction.y;
 	map_char = &game->map->buffer[new_pos.y][new_pos.x];
-	
 	if (*map_char == COIN_CHAR)
 	{
 		player_move(game, direction);
