@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 08:54:07 by jaime             #+#    #+#             */
-/*   Updated: 2023/09/08 17:28:48 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/08 19:04:11 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,21 @@ int	check_move(t_game *game, t_point direction)
 	new_pos.x = game->player.pos.x + direction.x;
 	new_pos.y = game->player.pos.y + direction.y;
 	map_char = &game->map->buffer[new_pos.y][new_pos.x];
-	if (*map_char == FLOOR_CHAR)
-	{
-		player_move(game, direction);
-	}
-	else if (*map_char == COIN_CHAR)
+	
+	if (*map_char == COIN_CHAR)
 	{
 		player_move(game, direction);
 		*map_char = FLOOR_CHAR;
 		game->map->coins--;
 		ft_printf("Coins: %d\n", game->map->coins);
 	}
-	else if (*map_char == EXIT_CHAR)
+	else if (*map_char == EXIT_CHAR && game->map->coins == 0)
 	{
-		if (game->map->coins == 0)
-			game_end(game);
+		game_end(game);
+	}
+	else if (*map_char == FLOOR_CHAR || *map_char == EXIT_CHAR)
+	{
+		player_move(game, direction);
 	}
 	ft_printf("Movements: %d\n", game->player.move_counter);
 	return (SUCCESS);
