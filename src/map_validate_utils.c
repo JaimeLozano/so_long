@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 22:45:05 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/04 23:48:01 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/08 17:56:00 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 void	map_check_name(char *filename)
 {
+	if (ft_strlen(filename) < 4)
+		print_error(ERROR_NAME);
 	filename = filename + ft_strlen(filename) - 4;
 	if (ft_strncmp(filename, ".ber", 4) != 0)
 		print_error(ERROR_NAME);
