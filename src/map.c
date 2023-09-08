@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:00:43 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/04 23:47:23 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/08 17:36:10 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	put_map(t_game *g)
 		j = g->map->size.x;
 	}
 	sprite_put(g, g->map->player_sprite.ref, \
-						g->player->pos.x * BPP, g->player->pos.y * BPP);
+						g->player.pos.x * BPP, g->player.pos.y * BPP);
 }
 
 void	map_print(t_map *map)
@@ -63,13 +63,14 @@ void	map_print(t_map *map)
 	ft_printf("\n");
 }
 
-void	read_map(int fd, t_game *game)
+void	read_map(int fd, t_game *game, int n_lines)
 {
 	int		i;
-	char	*tab[100];
+	char	**tab;
 	char	*line;
 	int		line_size;
 
+	tab = (char **)ft_calloc(n_lines, sizeof(char *));
 	line = get_next_line(fd);
 	if (!line)
 		print_error(ERROR_TOP);
@@ -87,9 +88,7 @@ void	read_map(int fd, t_game *game)
 	game->map->size.y = i;
 	line_size = ft_strlen(tab[0]);
 	game->map->size.x = line_size - 1;
-	game->map->buffer = (char **)ft_calloc(i, sizeof(char *));
-	while (i--)
-		game->map->buffer[i] = tab[i];
+	game->map->buffer = tab;
 }
 
 void	map_free(t_map *map)

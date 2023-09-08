@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 08:54:07 by jaime             #+#    #+#             */
-/*   Updated: 2023/09/05 23:10:36 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/08 17:44:56 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	check_path(t_game *game)
 		visited[i] = ft_calloc(game->map->size.x, sizeof(int));
 		i++;
 	}
-	path_exist = dfs(game->player->pos.y, game->player->pos.x, visited, game);
+	path_exist = dfs(game->player.pos.y, game->player.pos.x, visited, game);
 	i = 0;
 	while (i < game->map->size.y)
 	{
@@ -106,9 +106,9 @@ void	map_validate(t_game *game)
 	t_map	*map;
 
 	map = game->map;
-	game->player->move_counter = 0;
+	game->player.move_counter = 0;
 	check_corners(map);
-	check_items(game->map, game->player);
+	check_items(game->map, &game->player);
 	if (map->exit_present != 1 || map->player_present != 1 || map->coins < 1)
 	{
 		map_free(map);

@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 08:54:07 by jaime             #+#    #+#             */
-/*   Updated: 2023/09/04 22:24:08 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/08 17:28:48 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 void	player_move(t_game *game, t_point direction)
 {
-	game->player->pos.x += direction.x;
-	game->player->pos.y += direction.y;
-	game->player->move_counter++;
+	game->player.pos.x += direction.x;
+	game->player.pos.y += direction.y;
+	game->player.move_counter++;
 }
 
 int	check_move(t_game *game, t_point direction)
@@ -28,8 +28,8 @@ int	check_move(t_game *game, t_point direction)
 	char	*map_char;
 	t_point	new_pos;
 
-	new_pos.x = game->player->pos.x + direction.x;
-	new_pos.y = game->player->pos.y + direction.y;
+	new_pos.x = game->player.pos.x + direction.x;
+	new_pos.y = game->player.pos.y + direction.y;
 	map_char = &game->map->buffer[new_pos.y][new_pos.x];
 	if (*map_char == FLOOR_CHAR)
 	{
@@ -47,7 +47,7 @@ int	check_move(t_game *game, t_point direction)
 		if (game->map->coins == 0)
 			game_end(game);
 	}
-	ft_printf("Movements: %d\n", game->player->move_counter);
+	ft_printf("Movements: %d\n", game->player.move_counter);
 	return (SUCCESS);
 }
 

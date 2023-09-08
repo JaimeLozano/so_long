@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 09:07:13 by jaime             #+#    #+#             */
-/*   Updated: 2023/09/04 23:43:17 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/08 17:36:50 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "main.h"
 
 void	map_check_name(char *filename);
-void	read_map(int fd, t_game *game);
+void	read_map(int fd, t_game *game, int n_lines);
 void	map_validate(t_game *game);
 int		create_map(t_map *map);
 void	put_map(t_game *game);

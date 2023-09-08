@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:03:15 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/05 22:45:03 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/08 17:45:13 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@
 #include "main.h"
 #include "map.h"
 
+static int		line_count(int fd);
+
 int	main(int argc, char **argv)
 {
 	t_game		game;
-	t_player	player;
 	int			fd;
+	int			n_lines;
 
 	if (argc != 2)
 		print_error(ERROR_ARGC);
@@ -32,9 +34,11 @@ int	main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		print_error(ERROR_FD);
-	read_map(fd, &game);
+	n_lines = line_count(fd);
 	close(fd);
-	game.player = &player;
+	fd = open(argv[1], O_RDONLY);
+	read_map(fd, &game, n_lines);
+	close(fd);
 	map_validate(&game);
 	map_print(game.map);
 	create_window(&game);
@@ -69,4 +73,22 @@ void	print_error(int error_code)
 	else if (error_code == ERROR_WINDOW_CREATE)
 		ft_printf("Error\nERROR CODE: %d. No ptr to window given\n", error_code);
 	exit(1);
+}
+
+static int	line_count(int fd)
+{
+	int		i;
+	char	*line;
+
+	line = get_next_line(fd);
+	if (!line)
+		print_error(ERROR_TOP);
+	i = 0;
+	while (line)
+	{
+		i++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (i);
 }
