@@ -6,7 +6,7 @@
 /*   By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 23:03:15 by jlozano-          #+#    #+#             */
-/*   Updated: 2023/09/08 17:45:13 by jlozano-         ###   ########.fr       */
+/*   Updated: 2023/09/08 18:21:58 by jlozano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	print_error(int error_code)
 		ft_printf("Error\nERROR CODE: %d. Map error no path found\n", error_code);
 	else if (error_code == ERROR_WINDOW_CREATE)
 		ft_printf("Error\nERROR CODE: %d. No ptr to window given\n", error_code);
+	else if (error_code == ERROR_SPRITE)
+		ft_printf("Error\nERROR CODE: %d. Sprite error\n", error_code);
 	exit(1);
 }
 
