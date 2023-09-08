@@ -6,7 +6,7 @@
 #    By: jlozano- <jlozano-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 22:28:45 by jlozano-          #+#    #+#              #
-#    Updated: 2023/09/04 22:51:44 by jlozano-         ###   ########.fr        #
+#    Updated: 2023/09/08 17:21:51 by jlozano-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC		= src/main.c			\
 OBJ		= $(SRC:.c=.o)
 CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra -c
+#CFLAGS	= -Wall -Werror -Wextra -c -fsanitize=address -g3
 RM		= rm -f
 
 # minilibx
@@ -67,7 +68,8 @@ $(NAME): $(OBJ)
 #	make -C $(LIBMLX_DIR)  CFLAGS+=$(MLX_CFLAGS)
 	make -C $(FT_PRINTF_DIR)
 	make -C $(GNL_DIR)
-	$(CC) $(OBJ) -I$(SO_LONG_INC_DIR) $(GNL) $(FT_PRINTF) $(LIBMLX) $(FMWK) -o $(NAME)
+	$(CC) -g3 $(OBJ) -I$(SO_LONG_INC_DIR) $(GNL) $(FT_PRINTF) $(LIBMLX) $(FMWK) -o $(NAME)
+#	$(CC) -fsanitize=address -g3 $(OBJ) -I$(SO_LONG_INC_DIR) $(GNL) $(FT_PRINTF) $(LIBMLX) $(FMWK) -o $(NAME)
 
 clean:
 	$(RM) $(OBJ)
